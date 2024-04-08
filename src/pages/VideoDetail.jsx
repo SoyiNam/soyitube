@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
 import ChannelInfo from "../components/ChannelInfo";
 import RelatedVideos from "../components/RelatedVideos";
 import { useLocation } from "react-router-dom";
-import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function VideosDetail() {
   const {
