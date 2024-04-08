@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import VideoCard from "../components/VideoCard";
-
 import { useYoutubeApi } from "../context/YoutubeApiContext";
+import { useDarkMode } from "../context/DarkModeContext";
 
 export default function Videos() {
   // hook(useParams)을 통해 현재 URL의 Param을 가져온다
   const { keyword } = useParams();
   const { youtube } = useYoutubeApi();
-
-  console.log("keyword : ", keyword);
+  const buttonList = [
+    "ALL",
+    "NEWS",
+    "MUSIC",
+    "LIVE",
+    "BASEBALL",
+    "BEAUTY",
+    "FOOD",
+    "ANIMAL",
+    "TRAVEL",
+  ];
+  const { darkMode } = useDarkMode();
 
   const {
     isPending,
@@ -20,20 +30,20 @@ export default function Videos() {
     queryKey: ["videos", keyword],
     queryFn: () => youtube.search(keyword),
   });
-  console.log("videos : ", videos);
+  // console.log("videos : ", videos);
 
   return (
-    <>
+    <div>
       <form className="flex gap-2 mb-4">
-        <button className="bg-zinc-600 p-2 rounded">ALL</button>
-        <button className="bg-zinc-600 p-2 rounded">NEWS</button>
-        <button className="bg-zinc-600 p-2 rounded">MUSIC</button>
-        <button className="bg-zinc-600 p-2 rounded">LIVE</button>
-        <button className="bg-zinc-600 p-2 rounded">BASEBALL</button>
-        <button className="bg-zinc-600 p-2 rounded">BEAUTY</button>
-        <button className="bg-zinc-600 p-2 rounded">FOOD</button>
-        <button className="bg-zinc-600 p-2 rounded">ANIMAL</button>
-        <button className="bg-zinc-600 p-2 rounded">TRAVEL</button>
+        {buttonList.map((button) => (
+          <button
+            className={`p-2 rounded ${
+              darkMode ? "bg-white text-zinc-800" : "bg-zinc-900 text-white"
+            }`}
+          >
+            {button}
+          </button>
+        ))}
       </form>
       {/* <div>Videos {keyword ? `🔍${keyword}` : "🔥"}</div> */}
       {isPending && <p>Loading...</p>}
@@ -45,6 +55,6 @@ export default function Videos() {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }

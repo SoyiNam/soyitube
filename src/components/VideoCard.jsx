@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { formatAgo } from "../util/date";
 import { useNavigate } from "react-router-dom";
+import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function VideoCard({ video, type }) {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const navigate = useNavigate();
   const isList = type === "list";
+  const { isDark } = useContext(DarkModeContext);
 
   return (
     <li
@@ -20,9 +22,9 @@ export default function VideoCard({ video, type }) {
         alt={title}
       />
       <div className={isList ? "w-full mr-4" : "w-full"}>
-        <p className="font-semibold my-2  line-clamp-2">{title}</p>
-        <p className="text-sm opacity-80">{channelTitle}</p>
-        <p className="text-sm opacity-80">{formatAgo(publishedAt)}</p>
+        <p className="font-semibold my-2 line-clamp-2">{title}</p>
+        <p className="text-sm opacity-80 ">{channelTitle}</p>
+        <p className="text-sm opacity-80 ">{formatAgo(publishedAt)}</p>
       </div>
     </li>
   );

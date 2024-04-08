@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import ChannelInfo from "../components/ChannelInfo";
 import RelatedVideos from "../components/RelatedVideos";
 import { useLocation } from "react-router-dom";
+import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function VideosDetail() {
   const {
@@ -23,7 +24,7 @@ export default function VideosDetail() {
           title="video.id"
         />
         <div className="p-8">
-          <h2 className="text-xl font-bold">{title}</h2>
+          <h2 className="text-xl font-bold ">{title}</h2>
           <ChannelInfo id={channelId} name={channelTitle} />
           <pre className="whitespace-pre-wrap bg-zinc-800 p-2 rounded leading-7">
             {description}

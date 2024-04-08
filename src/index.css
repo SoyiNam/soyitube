@@ -13,6 +13,10 @@ body {
   @apply bg-zinc-900 text-gray-50;
 }
 
+body.light {
+  @apply bg-slate-50 text-zinc-900;
+}
+
 #root {
   @apply w-full max-w-screen-2xl;
 }
