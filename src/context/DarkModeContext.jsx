@@ -11,7 +11,7 @@ export function DarkModeProvider({ children }) {
   };
 
   useEffect(() => {
-    setDarkMode(!darkMode);
+    setDarkMode(true);
   }, []);
 
   return (

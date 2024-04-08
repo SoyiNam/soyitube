@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { formatAgo } from "../util/date";
 import { useNavigate } from "react-router-dom";
-import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function VideoCard({ video, type }) {
   const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   const navigate = useNavigate();
   const isList = type === "list";
-  const { isDark } = useContext(DarkModeContext);
 
   return (
     <li

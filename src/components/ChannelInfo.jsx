@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useYoutubeApi } from "../context/YoutubeApiContext";
 import { useQuery } from "@tanstack/react-query";
-import { DarkModeContext } from "../context/DarkModeContext";
 
 export default function ChannelInfo({ id, name }) {
   const { youtube } = useYoutubeApi();
