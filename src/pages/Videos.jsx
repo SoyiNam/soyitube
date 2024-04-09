@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import VideoCard from "../components/VideoCard";
@@ -21,6 +21,7 @@ export default function Videos() {
     "TRAVEL",
   ];
   const { darkMode } = useDarkMode();
+  console.log("darkMode : ", darkMode);
 
   const {
     isPending,

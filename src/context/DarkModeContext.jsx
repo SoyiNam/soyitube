@@ -10,10 +10,6 @@ export function DarkModeProvider({ children }) {
     updateDarkMode(!darkMode);
   };
 
-  useEffect(() => {
-    setDarkMode(true);
-  }, []);
-
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
       {children}
@@ -31,9 +27,9 @@ export function DarkModeProvider({ children }) {
 
 export function updateDarkMode(darkMode) {
   if (darkMode) {
-    document.body.classList.add("light");
-  } else {
     document.body.classList.remove("light");
+  } else {
+    document.body.classList.add("light");
   }
 }
 
